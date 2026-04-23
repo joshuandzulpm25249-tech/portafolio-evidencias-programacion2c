@@ -1,7 +1,8 @@
-#Adiel Bemjamin Kuk Huchin
+#Adiel Benjamin Kuk Huchin
 def saludar():
-    print("Hola Github")
+    print("Hola GitHub!")
 
 saludar()
 saludar()
 saludar()
+
