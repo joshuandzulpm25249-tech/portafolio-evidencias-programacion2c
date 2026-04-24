@@ -1,43 +1,133 @@
 # --- FUNCIONES (Módulos) ---
 
+# -------- FUNCIONES DE CÁLCULO --------
+
+def calcular_subtotal(precio, cantidad):
+    """
+    Calcula el subtotal multiplicando el precio por la cantidad.
+    
+    Parámetros:
+    precio (float): precio unitario del producto
+    cantidad (int): cantidad comprada
+    
+    Retorna:
+    float: subtotal de la compra
+    """
+    return precio * cantidad
+
+
 def calcular_descuento(subtotal):
-    """Calcula un 10% de descuento si el monto supera los 1000."""
+    """
+    Aplica un descuento del 10% si el subtotal es mayor a 1000.
+    
+    Parámetros:
+    subtotal (float): total sin descuento
+    
+    Retorna:
+    float: monto del descuento aplicado
+    """
     if subtotal > 1000:
-        return subtotal * 0.10
+        descuento = subtotal * 0.10
+        print(f"Se aplicó un descuento del 10%: -${descuento:.2f}")
+        return descuento
     return 0
 
-def calcular_iva(monto):
-    """Calcula el IVA del 16% sobre un monto dado."""
-    return monto * 0.16
 
-def imprimir_ticket(producto, subtotal, descuento, iva, total_final):
-    """Muestra el desglose de la venta en consola."""
+def calcular_iva(subtotal_con_descuento):
+    """
+    Calcula el IVA del 16%.
+    
+    Parámetros:
+    subtotal_con_descuento (float): subtotal después del descuento
+    
+    Retorna:
+    float: IVA calculado
+    """
+    return subtotal_con_descuento * 0.16
+
+
+def calcular_total(subtotal_con_descuento, iva):
+    """
+    Calcula el total final sumando subtotal con descuento e IVA.
+    
+    Parámetros:
+    subtotal_con_descuento (float)
+    iva (float)
+    
+    Retorna:
+    float: total a pagar
+    """
+    return subtotal_con_descuento + iva
+
+
+# -------- FUNCIÓN DE SALIDA --------
+
+def imprimir_ticket(producto, subtotal, iva, total):
+    """
+    Imprime el ticket de compra en pantalla.
+    
+    Parámetros:
+    producto (str): nombre del producto
+    subtotal (float)
+    iva (float)
+    total (float)
+    
+    Retorna:
+    None
+    """
     print("\n--- TICKET DE VENTA ---")
     print(f"Producto: {producto}")
     print(f"Subtotal: ${subtotal:.2f}")
-    if descuento > 0:
-        print(f"Descuento (10%): -${descuento:.2f}")
     print(f"IVA: ${iva:.2f}")
-    print(f"TOTAL A PAGAR: ${total_final:.2f}")
-    print("-----------------------")
+    print(f"TOTAL A PAGAR: ${total:.2f}")
+    print("----------------------")
 
-# --- FUNCIÓN PRINCIPAL ---
 
-def main():
-    print("--- Sistema de Cobro v1.2 (Con función Main) ---")
+# -------- FUNCIÓN QUE REALIZA UN COBRO --------
 
-    # 1. Entrada de datos
-    producto = input("Nombre del producto: ")
+def realizar_cobro():
+    """
+    Ejecuta todo el proceso de un cobro:
+    - Solicita datos al usuario
+    - Realiza cálculos
+    - Muestra el ticket
+    
+    Retorna:
+    None
+    """
+    producto = input("\nNombre del producto: ")
     precio = float(input("Precio unitario: "))
     cantidad = int(input("Cantidad: "))
 
-    # 2. Procesamiento (Lógica de negocio)
-    subtotal_inicial = precio * cantidad
-    monto_descuento = calcular_descuento(subtotal_inicial)
-    nuevo_subtotal = subtotal_inicial - monto_descuento
-    monto_iva = calcular_iva(nuevo_subtotal)
-    total = nuevo_subtotal + monto_iva
+    subtotal = calcular_subtotal(precio, cantidad)
+    descuento = calcular_descuento(subtotal)
+    subtotal_con_descuento = subtotal - descuento
+    iva = calcular_iva(subtotal_con_descuento)
+    total = calcular_total(subtotal_con_descuento, iva)
 
-    # 3. Salida de resultados
-    imprimir_ticket(producto, subtotal_inicial, monto_descuento, monto_iva, total)
+    imprimir_ticket(producto, subtotal, iva, total)
 
+
+# -------- FUNCIÓN PRINCIPAL --------
+
+def main():
+    """
+    Controla el flujo del programa completo.
+    Permite realizar múltiples cobros sin repetir código.
+    """
+    print("--- Sistema de Cobro v2.0 ---")
+
+    while True:
+        realizar_cobro()  # Llama al proceso completo
+
+        # Pregunta al usuario si desea continuar
+        opcion = input("\n¿Deseas realizar otro cobro? (s/n): ").lower()
+        if opcion != 's':
+            print("Gracias por usar el sistema.")
+            break
+
+
+# -------- EJECUCIÓN DEL PROGRAMA --------
+
+if __name__ == "__main__":
+    main()
