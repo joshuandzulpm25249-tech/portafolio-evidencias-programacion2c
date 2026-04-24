@@ -1,4 +1,3 @@
-
 # --- FUNCIONES (Módulos) ---
 
 def calcular_descuento(subtotal):
