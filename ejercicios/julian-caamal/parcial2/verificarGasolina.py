@@ -1,0 +1,5 @@
+gasolina=float(input("introduce los litros de gasolina: "))
+if gasolina >5:
+    print("puedes avansar")
+else:
+    print("necesitas gasolina")
