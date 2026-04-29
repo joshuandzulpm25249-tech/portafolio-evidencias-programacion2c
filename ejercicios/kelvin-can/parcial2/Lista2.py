@@ -9,7 +9,7 @@
 
 
 
- productos = ["leche","pan","huevos","manzanas"]
+productos = ["leche","pan","huevos","manzanas"]
 productos.extend(["arroz","frijol","aceite"])
 productos.pop(productos.index("pan"))
 productos.sort()
