@@ -33,8 +33,7 @@ class Cuenta:
         Realiza un retiro de la cuenta.
 
         Args:
-            cantidad (float): La cantidad a retirar. Debe ser un valor positivo 
-                              y no puede exceder el saldo disponible.
+            cantidad (float): La cantidad a retirar. Debe ser un valor positivo y no puede exceder el saldo disponible.
 
         Returns:
             bool: True si el retiro fue exitoso, False si la cantidad es inválida o insuficiente.
@@ -43,17 +42,6 @@ class Cuenta:
             self.saldo -= cantidad
             return True
         return False
-
-def main():
-    # Ejemplo de uso
-    mi_cuenta = Cuenta("Juan Pérez", "123456", 1000)
-    print(f"Cliente: {mi_cuenta.cliente} | Saldo inicial: {mi_cuenta.saldo}")
-    
-    if mi_cuenta.deposito(500):
-        print(f"Depósito exitoso. Nuevo saldo: {mi_cuenta.saldo}")
-        
-    if mi_cuenta.retirar(200):
-        print(f"Retiro exitoso. Nuevo saldo: {mi_cuenta.saldo}")
 
 if __name__ == "__main__":
     main()
