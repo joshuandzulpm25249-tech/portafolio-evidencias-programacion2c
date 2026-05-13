@@ -1,4 +1,5 @@
 class Cuenta:
+# Constructor de la clase Cuenta
 
     def __init__(self, cliente, cuenta, saldo=0):
         """
