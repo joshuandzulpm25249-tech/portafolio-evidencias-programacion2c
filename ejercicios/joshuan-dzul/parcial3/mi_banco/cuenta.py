@@ -1,7 +1,4 @@
 class Cuenta:
-    """
-    Representa una cuenta bancaria simple con operaciones de depósito y retiro.
-    """
 
     def __init__(self, cliente, cuenta, saldo=0):
         """
