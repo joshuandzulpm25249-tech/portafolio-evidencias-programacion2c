@@ -1,9 +1,15 @@
+<<<<<<< HEAD
 from ast import main
 
 
 class Cuenta:
 # Constructor de la clase Cuenta
 
+=======
+class Cuenta:
+# Constructor de la clase Cuenta
+
+>>>>>>> ae55baf3b3536ca88b7cb40061c44298a6ba713b
     def __init__(self, cliente, cuenta, saldo=0):
         """
         Constructor de la clase Cuenta.
